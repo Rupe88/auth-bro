@@ -67,7 +67,9 @@ interface OAuthStrategyConfig {
 interface PhoneStrategyConfig {
     enabled?: boolean;
     provider?: 'twilio' | 'aws-sns';
-    config?: any;
+    config?: {
+        [key: string]: any;
+    };
     otpLength?: number;
     otpExpiry?: string;
 }
@@ -104,7 +106,7 @@ interface CookieSettings {
 }
 interface HooksConfig {
     onUserCreated?: (user: User) => Promise<void> | void;
-    onLogin?: (user: User, session: any) => Promise<void> | void;
+    onLogin?: (user: User, session: unknown) => Promise<void> | void;
     onLogout?: (userId: string) => Promise<void> | void;
     onEmailVerified?: (user: User) => Promise<void> | void;
 }

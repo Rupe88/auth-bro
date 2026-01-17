@@ -12,13 +12,13 @@ CJS Build start
 ESM Build start
 CJS You have emitDecoratorMetadata enabled but @swc/core was not installed, skipping swc plugin
 ESM You have emitDecoratorMetadata enabled but @swc/core was not installed, skipping swc plugin
-ESM dist/index.mjs     41.24 KB
-ESM dist/index.mjs.map 73.10 KB
-ESM ⚡️ Build success in 26ms
-CJS dist/index.js     43.35 KB
-CJS dist/index.js.map 73.34 KB
-CJS ⚡️ Build success in 26ms
+ESM dist/index.mjs     41.17 KB
+ESM dist/index.mjs.map 73.13 KB
+ESM ⚡️ Build success in 25ms
+CJS dist/index.js     43.28 KB
+CJS dist/index.js.map 73.37 KB
+CJS ⚡️ Build success in 27ms
 DTS Build start
-DTS ⚡️ Build success in 2069ms
-DTS dist/index.d.ts  5.84 KB
-DTS dist/index.d.mts 5.84 KB
+DTS ⚡️ Build success in 2018ms
+DTS dist/index.d.ts  5.88 KB
+DTS dist/index.d.mts 5.88 KB

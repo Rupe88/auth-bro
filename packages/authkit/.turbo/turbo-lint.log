@@ -1,0 +1,38 @@
+
+> auth-bro@1.0.0 lint
+> eslint src/**/*.ts
+
+
+/home/rupesh/hobby/auth-nepal/packages/authkit/src/services/email.ts
+  31:63  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/rupesh/hobby/auth-nepal/packages/authkit/src/services/jwt.ts
+  23:10  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  33:10  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  43:13  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  61:13  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  74:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  87:44  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/rupesh/hobby/auth-nepal/packages/authkit/src/services/oauth.ts
+   17:53  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   82:68  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  104:41  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  225:60  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/rupesh/hobby/auth-nepal/packages/authkit/src/services/password.ts
+   64:43  error  Unnecessary escape character: \[  no-useless-escape
+  138:26  error  Unnecessary escape character: \[  no-useless-escape
+
+/home/rupesh/hobby/auth-nepal/packages/authkit/src/types/index.ts
+  86:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+✖ 14 problems (2 errors, 12 warnings)
+
+npm error Lifecycle script `lint` failed with error:
+npm error code 1
+npm error path /home/rupesh/hobby/auth-nepal/packages/authkit
+npm error workspace auth-bro@1.0.0
+npm error location /home/rupesh/hobby/auth-nepal/packages/authkit
+npm error command failed
+npm error command sh -c eslint src/**/*.ts

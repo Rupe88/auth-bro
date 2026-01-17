@@ -1,9 +1,9 @@
-import nodemailer from 'nodemailer';
+import nodemailer, { Transporter } from 'nodemailer';
 import { EmailConfig, User } from '../types';
 
 export class EmailService {
   private config: EmailConfig;
-  private transporter: any;
+  private transporter: Transporter;
 
   constructor(config: EmailConfig) {
     this.config = config;

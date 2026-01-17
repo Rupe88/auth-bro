@@ -14,7 +14,7 @@ export class OAuthService {
 
   private initializePassport(): void {
     // Serialize user for session
-    passport.serializeUser((user: any, done) => {
+    passport.serializeUser((user: any, done: any) => {
       done(null, user.id);
     });
 
@@ -79,7 +79,7 @@ export class OAuthService {
           callbackURL: config.callbackURL || '/api/auth/github/callback',
           scope: config.scope || ['user:email'],
         },
-        async (accessToken: string, refreshToken: string, profile: any, done: (error: any, user?: User | undefined) => void) => {
+        async (accessToken: string, refreshToken: string, profile: any, done: (error: Error | null, user?: User) => void) => {
           try {
             const user = await this.handleOAuthCallback(
               'github',
@@ -89,7 +89,7 @@ export class OAuthService {
             );
             done(null, user);
           } catch (error) {
-            done(error, undefined);
+            done(error as Error, undefined);
           }
         }
       )
@@ -101,7 +101,7 @@ export class OAuthService {
    */
   private async handleOAuthCallback(
     provider: string,
-    profile: Profile | any,
+    profile: Profile | { [key: string]: any },
     accessToken: string,
     refreshToken?: string
   ): Promise<User> {
@@ -222,7 +222,7 @@ export class OAuthService {
   /**
    * Middleware for OAuth authentication
    */
-  authenticate(provider: string, options: any = {}) {
+  authenticate(provider: string, options: { [key: string]: any } = {}) {
     return passport.authenticate(provider, {
       session: false,
       ...options,

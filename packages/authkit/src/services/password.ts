@@ -61,7 +61,7 @@ export class PasswordService {
     }
 
     // Check symbols requirement
-    if (reqs.symbols && !/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) {
+    if (reqs.symbols && !/[!@#$%^&*()_+\-=[\]{};"\\|,.<>?]/.test(password)) {
       errors.push('Password must contain at least one special character');
     }
 
@@ -135,7 +135,7 @@ export class PasswordService {
     if (/[A-Z]/.test(password)) score++;
     if (/[a-z]/.test(password)) score++;
     if (/\d/.test(password)) score++;
-    if (/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) score++;
+    if (/[!@#$%^&*()_+\-=[\]{};"\\|,.<>?]/.test(password)) score++;
 
     // Complexity bonus
     if (password.length >= 16 && score >= 4) score++;

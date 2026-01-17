@@ -18,21 +18,19 @@ var JWTService = class {
    * Generate access token
    */
   generateAccessToken(payload) {
-    const options = {
+    return jwt.sign(payload, this.config.secret, {
       expiresIn: this.config.accessTokenExpiry,
       algorithm: this.config.algorithm
-    };
-    return jwt.sign(payload, this.config.secret, options);
+    });
   }
   /**
    * Generate refresh token
    */
   generateRefreshToken(payload) {
-    const options = {
+    return jwt.sign(payload, this.config.secret, {
       expiresIn: this.config.refreshTokenExpiry,
       algorithm: this.config.algorithm
-    };
-    return jwt.sign(payload, this.config.secret, options);
+    });
   }
   /**
    * Verify access token
@@ -199,7 +197,7 @@ var PasswordService = class {
     if (reqs.numbers && !/\d/.test(password)) {
       errors.push("Password must contain at least one number");
     }
-    if (reqs.symbols && !/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) {
+    if (reqs.symbols && !/[!@#$%^&*()_+\-=[\]{};"\\|,.<>?]/.test(password)) {
       errors.push("Password must contain at least one special character");
     }
     return {
@@ -257,7 +255,7 @@ var PasswordService = class {
     if (/[A-Z]/.test(password)) score++;
     if (/[a-z]/.test(password)) score++;
     if (/\d/.test(password)) score++;
-    if (/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) score++;
+    if (/[!@#$%^&*()_+\-=[\]{};"\\|,.<>?]/.test(password)) score++;
     if (password.length >= 16 && score >= 4) score++;
     return Math.min(score, 4);
   }

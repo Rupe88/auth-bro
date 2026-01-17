@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
 
 // Base user type (extendable)
@@ -83,7 +83,7 @@ export interface OAuthStrategyConfig {
 export interface PhoneStrategyConfig {
   enabled?: boolean;
   provider?: 'twilio' | 'aws-sns';
-  config?: any;
+  config?: { [key: string]: any };
   otpLength?: number;
   otpExpiry?: string;
 }
@@ -131,7 +131,7 @@ export interface CookieSettings {
 // Hooks/events
 export interface HooksConfig {
   onUserCreated?: (user: User) => Promise<void> | void;
-  onLogin?: (user: User, session: any) => Promise<void> | void;
+  onLogin?: (user: User, session: unknown) => Promise<void> | void;
   onLogout?: (userId: string) => Promise<void> | void;
   onEmailVerified?: (user: User) => Promise<void> | void;
 }
@@ -146,7 +146,7 @@ export interface RedirectConfig {
 // Extended Express types
 export interface AuthRequest extends Request {
   user?: User;
-  session?: any;
+  session?: unknown;
 }
 
 export interface AuthResponse extends Response {

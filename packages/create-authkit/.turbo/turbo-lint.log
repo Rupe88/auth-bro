@@ -1,0 +1,4 @@
+
+> create-auth-bro@1.0.0 lint
+> eslint src/**/*.ts
+
