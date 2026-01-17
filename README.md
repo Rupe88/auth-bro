@@ -44,13 +44,13 @@ npx create-auth-bro@latest my-awesome-app
 If you have an existing project and want to add auth to it.
 
 ```bash
-npm install auth-bro @prisma/client
+npm install @rupeshe/auth-bro @prisma/client
 ```
 
 ```typescript
 // That's it! Really!
 import express from 'express';
-import { AuthKit } from 'auth-bro';
+import { AuthKit } from '@rupeshe/auth-bro';
 import { PrismaClient } from '@prisma/client';
 
 const app = express();
