@@ -18,7 +18,7 @@ const templates = {
   },
   "dependencies": {
     "express": "^4.19.2",
-    "authkit": "^1.0.0",
+    "auth-bro": "^1.0.0",
     "@prisma/client": "^6.1.0",
     "prisma": "^6.1.0",
     "cors": "^2.8.5",
@@ -58,7 +58,7 @@ const templates = {
 import cors from 'cors';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
-import { AuthKit } from 'authkit';
+import { AuthKit } from 'auth-bro';
 import { PrismaClient } from '@prisma/client';
 import { authRouter } from './routes/auth';
 import { apiRouter } from './routes/api';
@@ -145,7 +145,7 @@ router.get('/public', (req, res) => {
 });
 
 export { router as apiRouter };`,
-        'src/middleware/auth.ts': `import { AuthKit } from 'authkit';
+        'src/middleware/auth.ts': `import { AuthKit } from 'auth-bro';
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
@@ -174,7 +174,7 @@ export const auth = new AuthKit({
     "fastify": "^4.24.0",
     "@fastify/cors": "^8.5.0",
     "@fastify/helmet": "^11.1.1",
-    "authkit": "^1.0.0",
+    "auth-bro": "^1.0.0",
     "@prisma/client": "^6.1.0",
     "prisma": "^6.1.0",
     "dotenv": "^16.4.5"{{#if (includes strategies 'google')}},
@@ -210,7 +210,7 @@ export const auth = new AuthKit({
 import cors from '@fastify/cors';
 import helmet from '@fastify/helmet';
 import dotenv from 'dotenv';
-import { AuthKit } from 'authkit';
+import { AuthKit } from 'auth-bro';
 import { PrismaClient } from '@prisma/client';
 
 dotenv.config();
@@ -304,7 +304,7 @@ export const apiRoutes = {};`,
     "next": "^14.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "authkit": "^1.0.0",
+    "auth-bro": "^1.0.0",
     "@prisma/client": "^6.1.0",
     "prisma": "^6.1.0",
     "dotenv": "^16.4.5"{{#if (includes strategies 'google')}},
@@ -320,7 +320,7 @@ export const apiRoutes = {};`,
     "eslint-config-next": "^14.0.0"
   }
 }`,
-        'src/app/api/auth/[...nextauth]/route.ts': `import { AuthKit } from 'authkit';
+        'src/app/api/auth/[...nextauth]/route.ts': `import { AuthKit } from 'auth-bro';
 import { PrismaClient } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -412,7 +412,7 @@ ${config.strategies.includes('github') ? 'GITHUB_CLIENT_ID="your-github-client-i
 
 ## Learn More
 
-- [AuthKit Documentation](https://authkit.dev)
+- [Auth-Bro Documentation](https://auth-bro.dev)
 - [${config.framework} Documentation](https://${config.framework}.js.org)
 `;
     await fs.writeFile(path.join(projectPath, 'README.md'), readme);

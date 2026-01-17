@@ -21,7 +21,7 @@ async function main() {
     const projectName = args[0];
     if (!projectName) {
         console.error(chalk.red('Error: Please provide a project name'));
-        console.log('Usage: npx create-authkit <project-name>');
+        console.log('Usage: npx create-auth-bro <project-name>');
         process.exit(1);
     }
     try {
@@ -34,18 +34,18 @@ async function main() {
 }
 function showHelp() {
     console.log(`
-${chalk.bold.blue('🚀 AuthKit Project Creator')}
+${chalk.bold.blue('🚀 Auth-Bro Project Creator')}
 
 ${chalk.bold('Usage:')}
-  npx create-authkit <project-name> [options]
+  npx create-auth-bro <project-name> [options]
 
 ${chalk.bold('Options:')}
   --help, -h     Show this help message
   --version, -v  Show version number
 
 ${chalk.bold('Examples:')}
-  npx create-authkit my-app
-  npx create-authkit my-project --template express
+  npx create-auth-bro my-app
+  npx create-auth-bro my-project --template express
 `);
 }
 function showVersion() {

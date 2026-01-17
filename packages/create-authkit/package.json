@@ -1,10 +1,10 @@
 {
-  "name": "create-authkit",
+  "name": "create-auth-bro",
   "version": "1.0.0",
   "description": "CLI tool to bootstrap AuthKit projects",
   "main": "dist/index.js",
   "bin": {
-    "create-authkit": "./dist/index.js"
+    "create-auth-bro": "./dist/index.js"
   },
   "scripts": {
     "build": "tsc",
@@ -35,6 +35,7 @@
     "access": "public"
   },
   "dependencies": {
+    "auth-bro": "file:../authkit",
     "prompts": "^2.4.2",
     "chalk": "^5.3.0",
     "ora": "^8.1.0",

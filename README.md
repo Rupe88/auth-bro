@@ -1,24 +1,24 @@
-# AuthKit - Production-Ready Authentication
+# Auth-Bro - Production-Ready Authentication
 
 🚀 **The easiest way to add authentication to your web applications**
 
-AuthKit is a comprehensive authentication library that supports multiple databases, frameworks, and authentication strategies. Built with TypeScript, Prisma, and modern security practices.
+Auth-Bro is a comprehensive authentication library that supports multiple databases, frameworks, and authentication strategies. Built with TypeScript, Prisma, and modern security practices.
 
 ## 📦 Packages
 
 This monorepo contains two packages:
 
-- **`authkit`** - Core authentication library
-- **`create-authkit`** - CLI tool for bootstrapping projects
+- **`auth-bro`** - Core authentication library
+- **`create-auth-bro`** - CLI tool for bootstrapping projects
 
 ## 🚀 Quick Start
 
 ### Option 1: CLI (Recommended)
 
 ```bash
-npm create authkit@latest my-app
+npm create auth-bro@latest my-app
 # or
-npx create-authkit@latest my-app
+npx create-auth-bro@latest my-app
 ```
 
 **Interactive setup:**
@@ -30,12 +30,12 @@ npx create-authkit@latest my-app
 ### Option 2: Manual Setup
 
 ```bash
-npm install authkit @prisma/client
+npm install auth-bro @prisma/client
 ```
 
 ```typescript
 import express from 'express';
-import { AuthKit } from 'authkit';
+import { AuthKit } from 'auth-bro';
 import { PrismaClient } from '@prisma/client';
 
 const app = express();

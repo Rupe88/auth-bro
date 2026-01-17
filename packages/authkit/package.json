@@ -1,5 +1,5 @@
 {
-  "name": "authkit",
+  "name": "auth-bro",
   "version": "1.0.0",
   "description": "Production-ready authentication library with Prisma support",
   "main": "dist/index.js",

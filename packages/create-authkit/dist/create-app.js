@@ -6,7 +6,7 @@ import fs from 'fs-extra';
 import path from 'path';
 import { generateTemplate } from './template-generator';
 import { installDependencies } from './package-manager';
-import { SchemaGenerator } from 'authkit';
+import { SchemaGenerator } from 'auth-bro';
 export async function createApp(projectName) {
     console.log(chalk.bold.blue('🚀 Welcome to AuthKit!'));
     console.log(chalk.gray('Let\'s create your authentication-powered app...\n'));
