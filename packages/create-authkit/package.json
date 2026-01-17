@@ -24,13 +24,13 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/authkit/authkit.git",
+    "url": "https://github.com/Rupe88/auth-bro.git",
     "directory": "packages/create-authkit"
   },
   "bugs": {
-    "url": "https://github.com/authkit/authkit/issues"
+    "url": "https://github.com/Rupe88/auth-bro/issues"
   },
-  "homepage": "https://authkit.dev/cli",
+  "homepage": "https://github.com/Rupe88/auth-bro",
   "publishConfig": {
     "access": "public"
   },
