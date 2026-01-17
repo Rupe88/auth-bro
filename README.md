@@ -1,54 +1,52 @@
-# 🚀 Auth-Bro - Authentication Made Simple & Cool
+# Auth-Bro - Production-Ready Authentication Library
 
-**Tired of building auth from scratch?** Meet Auth-Bro - your new authentication best friend! 🦸‍♂️
+Auth-Bro is a comprehensive authentication solution that provides secure user management, OAuth integration, and JWT-based session handling. Built with TypeScript for full type safety and designed for modern web applications.
 
-Auth-Bro handles all the boring, complex auth stuff so you can focus on building awesome features. It's like having a senior auth engineer who never sleeps, complains, or asks for coffee breaks.
+## Features
 
-**Why developers love Auth-Bro:**
-- ⚡ **5-minute setup** - Get auth working faster than making coffee
-- 🛡️ **Battle-tested security** - JWT, bcrypt, rate limiting included
-- 🎯 **Framework friendly** - Express, Fastify, Next.js support
-- 🗄️ **Database flexible** - PostgreSQL, MySQL, SQLite, MongoDB
-- 🔑 **OAuth ready** - Google, GitHub login out of the box
-- 📱 **API-first** - Perfect for SPAs, mobile apps, PWAs
-- 🎨 **TypeScript native** - Full type safety, zero guesswork
+- **Complete Authentication System** - User registration, login, password reset, and email verification
+- **Multi-Database Support** - PostgreSQL, MySQL, SQLite, MongoDB, SQL Server, CockroachDB
+- **OAuth Integration** - Google and GitHub authentication providers
+- **Framework Agnostic** - Compatible with Express, Fastify, and Next.js
+- **Security First** - JWT tokens, bcrypt password hashing, and rate limiting
+- **TypeScript Native** - Complete type definitions and IntelliSense support
+- **Developer Experience** - Clear error messages and comprehensive documentation
 
-## 📦 What's Inside
+## Packages
 
-**Two packages that work together like peanut butter and jelly:**
+This monorepo contains two packages:
 
-### 🔧 `auth-bro` - The Core Engine
-The powerhouse library that does all the heavy lifting. Handles users, passwords, tokens, OAuth, and all the security stuff.
+### `@rupeshe/auth-bro` - Core Authentication Library
+The main library that provides all authentication functionality including user management, OAuth providers, JWT handling, and security features.
 
-### ⚡ `create-auth-bro` - The Magic CLI
-Think `create-react-app` but for authentication. One command gives you a complete auth-ready app. No more "which auth library should I use?" debates.
+### `@rupeshe/create-auth-bro` - CLI Tool
+A command-line interface that bootstraps new projects with authentication already configured. Similar to `create-react-app` but for authentication.
 
-## 🚀 Get Started - Choose Your Adventure
+## Installation
 
-### 🌟 Option 1: The Magic CLI (Recommended for beginners)
-Perfect if you want auth working in 5 minutes without thinking about databases or OAuth setup.
+### Option 1: CLI Tool (Recommended)
+For new projects, use the CLI to bootstrap a complete application with authentication:
 
 ```bash
-npx create-auth-bro@latest my-awesome-app
+npx @rupeshe/create-auth-bro@latest my-app
 ```
 
-**What happens next?** The CLI asks you friendly questions:
-- 🤔 **"What framework?"** → Express, Fastify, or Next.js
-- 🗄️ **"Which database?"** → PostgreSQL, MySQL, SQLite, or MongoDB
-- 🔐 **"How should users log in?"** → Email/password, Google, GitHub, or all of them!
-- ⚙️ **"Extra features?"** → Email verification, password reset, rate limiting
+The CLI will prompt you to select:
+- Framework (Express, Fastify, Next.js)
+- Database (PostgreSQL, MySQL, SQLite, MongoDB)
+- Authentication strategies (Email/Password, Google, GitHub)
+- Additional features (Email verification, password reset, rate limiting)
 
-**Result:** A complete, running app with authentication! Just `npm run dev` and you're done.
-
-### 🔧 Option 2: Manual Setup (For experienced devs)
-If you have an existing project and want to add auth to it.
+### Option 2: Manual Installation
+For existing projects, install the core library:
 
 ```bash
 npm install @rupeshe/auth-bro @prisma/client
 ```
 
+## Quick Start
+
 ```typescript
-// That's it! Really!
 import express from 'express';
 import { AuthKit } from '@rupeshe/auth-bro';
 import { PrismaClient } from '@prisma/client';
@@ -56,12 +54,12 @@ import { PrismaClient } from '@prisma/client';
 const app = express();
 const prisma = new PrismaClient();
 
-// 🪄 One line does everything!
+// Initialize AuthKit with your configuration
 const auth = new AuthKit({
   prisma,
-  secret: process.env.JWT_SECRET!, // Your JWT secret
+  secret: process.env.JWT_SECRET!,
   strategies: {
-    local: true, // Enable email/password auth
+    local: true, // Enable email/password authentication
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
@@ -69,55 +67,46 @@ const auth = new AuthKit({
   },
 });
 
-// 🎯 Mount all auth routes automatically
+// Mount authentication routes
 app.use('/api/auth', auth.getRouter());
 
-// 🛡️ Protect any route with one line
+// Protect routes with authentication middleware
 app.get('/api/profile', auth.requireAuth(), (req, res) => {
-  res.json({ user: req.user }); // Fully typed! 🎉
+  res.json({ user: req.user }); // Fully typed
 });
 
-app.listen(3000, () => {
-  console.log('🚀 Auth-Bro ready at http://localhost:3000');
-});
+app.listen(3000);
 ```
 
-## ✨ Features
+## API Reference
 
-### 🔐 Authentication Strategies
-- ✅ Email/Password authentication
-- ✅ Google OAuth
-- ✅ GitHub OAuth
-- ✅ Magic Link (coming soon)
-- ✅ Phone/SMS (coming soon)
+### Authentication Routes
 
-### 🗄️ Database Support
-- ✅ PostgreSQL
-- ✅ MySQL
-- ✅ SQLite
-- ✅ MongoDB
-- ✅ SQL Server
-- ✅ CockroachDB
+All authentication routes are automatically mounted under `/api/auth`:
 
-### 🛠️ Framework Support
-- ✅ Express.js
-- ✅ Fastify
-- ✅ Next.js (coming soon)
+- `POST /api/auth/register` - User registration
+- `POST /api/auth/login` - User login
+- `POST /api/auth/logout` - User logout
+- `POST /api/auth/refresh` - Refresh access token
+- `GET /api/auth/me` - Get current user
+- `POST /api/auth/forgot-password` - Request password reset
+- `POST /api/auth/reset-password` - Reset password
+- `GET /api/auth/google` - Google OAuth login
+- `GET /api/auth/github` - GitHub OAuth login
 
-### 🔒 Security Features
-- ✅ JWT with refresh tokens
-- ✅ Password hashing (bcrypt)
-- ✅ Rate limiting
-- ✅ Email verification
-- ✅ Password reset
-- ✅ Session management
+### Middleware
 
-### 🎯 Developer Experience
-- ✅ TypeScript first
-- ✅ Comprehensive middleware
-- ✅ Auto-generated Prisma schemas
-- ✅ Docker Compose generation
-- ✅ One-command setup
+```typescript
+// Require authentication
+app.get('/protected', auth.requireAuth(), (req, res) => {
+  // Only authenticated users can access
+});
+
+// Require specific role
+app.get('/admin', auth.requireAuth(['admin']), (req, res) => {
+  // Only admin users can access
+});
+```
 
 ## 📚 Documentation
 
@@ -125,41 +114,79 @@ app.listen(3000, () => {
 - [API Reference](./packages/authkit/docs/api.md)
 - [CLI Guide](./packages/create-authkit/README.md)
 
-## 🏆 Why AuthKit?
+## Configuration
 
-### **vs. Passport.js**
-- Modern TypeScript API
-- Built-in database integration
-- Automatic schema generation
-- Better security defaults
+### Environment Variables
 
-### **vs. NextAuth.js**
-- Framework agnostic
-- More database options
-- Advanced security features
-- Enterprise-ready
+```bash
+# JWT Configuration
+JWT_SECRET=your-super-secret-jwt-key-here
+JWT_ACCESS_EXPIRY=15m
+JWT_REFRESH_EXPIRY=7d
 
-### **vs. Custom Implementation**
-- Production-tested
-- Security audited
-- Comprehensive features
-- Active maintenance
+# Database
+DATABASE_URL="postgresql://user:password@localhost:5432/authkit"
 
-## 🤝 Contributing
+# Email Service (optional)
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASS=your-app-password
 
-We welcome contributions! See [CONTRIBUTING.md](./CONTRIBUTING.md)
+# OAuth Providers (optional)
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+GITHUB_CLIENT_ID=your-github-client-id
+GITHUB_CLIENT_SECRET=your-github-client-secret
+```
 
-## 📄 License
+### AuthKit Configuration
 
-MIT License - Free for personal and commercial use
+```typescript
+const auth = new AuthKit({
+  prisma: new PrismaClient(),
+  secret: process.env.JWT_SECRET!,
 
-## 📞 Support
+  // Authentication strategies
+  strategies: {
+    local: true, // Email/password
+    google: {
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    },
+    github: {
+      clientId: process.env.GITHUB_CLIENT_ID!,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET!,
+    },
+  },
 
-- **GitHub Issues**: [Report bugs](https://github.com/authkit/authkit/issues)
-- **Discord**: [Join community](https://discord.gg/authkit)
-- **Documentation**: [authkit.dev](https://authkit.dev)
+  // Email configuration
+  email: {
+    host: process.env.EMAIL_HOST,
+    port: parseInt(process.env.EMAIL_PORT || '587'),
+    auth: {
+      user: process.env.EMAIL_USER!,
+      pass: process.env.EMAIL_PASS!,
+    },
+  },
 
----
+  // Security settings
+  security: {
+    rateLimit: { windowMs: 15 * 60 * 1000, max: 100 },
+    bcryptRounds: 12,
+  },
+});
+```
 
-**Made with ❤️ for developers who hate building auth**
-# auth-bro
+## Contributing
+
+We welcome contributions! Please see our [Contributing Guide](./CONTRIBUTING.md) for details.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Support
+
+- **Issues**: [GitHub Issues](https://github.com/Rupe88/auth-bro/issues)
+- **Documentation**: Comprehensive API docs available in package READMEs
