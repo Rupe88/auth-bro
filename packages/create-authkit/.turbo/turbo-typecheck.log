@@ -1,0 +1,12 @@
+
+> create-authkit@1.0.0 typecheck
+> tsc --noEmit --skipLibCheck
+
+src/create-app.ts(9,33): error TS2307: Cannot find module 'authkit' or its corresponding type declarations.
+npm error Lifecycle script `typecheck` failed with error:
+npm error code 2
+npm error path /home/rupesh/hobby/auth-nepal/packages/create-authkit
+npm error workspace create-authkit@1.0.0
+npm error location /home/rupesh/hobby/auth-nepal/packages/create-authkit
+npm error command failed
+npm error command sh -c tsc --noEmit --skipLibCheck

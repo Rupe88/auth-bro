@@ -1,0 +1,57 @@
+{
+  "name": "create-authkit",
+  "version": "1.0.0",
+  "description": "CLI tool to bootstrap AuthKit projects",
+  "main": "dist/index.js",
+  "bin": {
+    "create-authkit": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "lint": "eslint src/**/*.ts",
+    "typecheck": "tsc --noEmit --skipLibCheck"
+  },
+  "keywords": [
+    "cli",
+    "authentication",
+    "bootstrap",
+    "create-app",
+    "authkit"
+  ],
+  "author": "AuthKit Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/authkit/authkit.git",
+    "directory": "packages/create-authkit"
+  },
+  "bugs": {
+    "url": "https://github.com/authkit/authkit/issues"
+  },
+  "homepage": "https://authkit.dev/cli",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "prompts": "^2.4.2",
+    "chalk": "^5.3.0",
+    "ora": "^8.1.0",
+    "execa": "^9.4.0",
+    "fs-extra": "^11.2.0",
+    "handlebars": "^4.7.8"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "tsup": "^8.3.0",
+    "@types/prompts": "^2.4.9",
+    "@types/fs-extra": "^11.0.4",
+    "eslint": "^8.57.0",
+    "@typescript-eslint/eslint-plugin": "^7.7.0",
+    "@typescript-eslint/parser": "^7.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
