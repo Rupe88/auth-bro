@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import { User, JWTConfig } from '../types';
 
 export class JWTService {
-  private config: JWTConfig;
+  private config: Required<Pick<JWTConfig, 'secret' | 'accessTokenExpiry' | 'refreshTokenExpiry' | 'algorithm'>>;
 
   constructor(config: JWTConfig) {
     this.config = {
@@ -17,22 +17,20 @@ export class JWTService {
    * Generate access token
    */
   generateAccessToken(payload: { userId: string; email?: string; role?: string }): string {
-    const options: jwt.SignOptions = {
+    return jwt.sign(payload, this.config.secret, {
       expiresIn: this.config.accessTokenExpiry,
       algorithm: this.config.algorithm as jwt.Algorithm,
-    };
-    return jwt.sign(payload, this.config.secret, options);
+    } as any);
   }
 
   /**
    * Generate refresh token
    */
   generateRefreshToken(payload: { userId: string; tokenId: string }): string {
-    const options: jwt.SignOptions = {
+    return jwt.sign(payload, this.config.secret, {
       expiresIn: this.config.refreshTokenExpiry,
       algorithm: this.config.algorithm as jwt.Algorithm,
-    };
-    return jwt.sign(payload, this.config.secret, options);
+    } as any);
   }
 
   /**
