@@ -1,0 +1,36 @@
+{
+  "name": "authkit-monorepo",
+  "private": true,
+  "packageManager": "npm@10.2.3",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "test": "turbo test",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "release": "turbo release",
+    "publish:all": "npm run build && npm run publish:authkit && npm run publish:cli",
+    "publish:authkit": "cd packages/authkit && npm publish",
+    "publish:cli": "cd packages/create-authkit && npm publish",
+    "version:bump": "npm version patch --workspaces",
+    "release:patch": "npm version patch && git push --follow-tags",
+    "release:minor": "npm version minor && git push --follow-tags",
+    "release:major": "npm version major && git push --follow-tags",
+    "clean": "rm -rf packages/*/dist packages/*/node_modules"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/authkit/authkit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/authkit/authkit/issues"
+  },
+  "homepage": "https://authkit.dev",
+  "devDependencies": {
+    "turbo": "^2.0.0"
+  },
+  "version": "0.0.1"
+}
